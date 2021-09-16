@@ -44,7 +44,7 @@ pub struct StakesTuple {
 
 fn stakes_unpacker(value: &TokenValue) -> UnpackerResult<BTreeMap<u64, u64>> {
     match value {
-        TokenValue::Map(ParamType::Uint(64), values) => {
+        TokenValue::Map(ParamType::Uint(64), ParamType::Uint(64), values) => {
             let mut map = BTreeMap::<u64, u64>::new();
             for (key, value) in values {
                 let key = key.parse::<u64>().map_err(|_| UnpackerError::InvalidAbi)?;
